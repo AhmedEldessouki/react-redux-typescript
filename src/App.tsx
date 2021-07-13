@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
+import AdminDashboard from "./pages/adminDashboard";
 import PageEight from "./pages/pageEight";
 import PageEleven from "./pages/pageEleven";
 import PageFive from "./pages/pageFive";
@@ -21,6 +22,7 @@ function App() {
         <Router>
           <nav className="Nav">
             <Link to="/">Home</Link>
+            <Link to="/admin-dashboard">Admin Dashboard</Link>
             <Link to="/page-one">Page one</Link>
             <Link to="/page-two">Page two</Link>
             <Link to="/page-three">Page three</Link>
@@ -36,6 +38,9 @@ function App() {
           </nav>
           <Switch>
             <Route path="/" exact />
+            <Route path="/admin-dashboard">
+              <AdminDashboard />
+            </Route>
             <Route path="/page-one">
               <PageOne />
             </Route>
