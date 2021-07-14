@@ -32,7 +32,7 @@ const initialState: StateType = {
 };
 
 const userSlice = createSlice({
-  name: "counter",
+  name: "user",
   initialState,
   reducers: {
     addUser(state, action: PayloadAction<{ num: number } | undefined>) {
