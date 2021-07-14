@@ -1,4 +1,5 @@
 import React from "react";
+import CompanyGenerator from "../app/generate/company";
 import UserGenerator from "../app/generate/user";
 
 const state = [
@@ -29,6 +30,7 @@ function AdminDashboard() {
     <div>
       <h1>Admin Dashboard</h1>
       <UserGenerator />
+      <CompanyGenerator />
       <form
         onSubmit={(e) => {
           e.preventDefault();
