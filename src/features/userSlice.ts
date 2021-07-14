@@ -1,6 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { generateUser } from "../app/generate/user";
+import Faker from "faker/locale/en";
 
+const generateUser = (num: number | undefined = 1) => {
+  const users = [];
+  for (let index = 0; index < num; index++) {
+    users.push({
+      firstName: Faker.name.firstName(),
+      gender: Faker.name.gender(),
+      jobTitle: Faker.name.jobTitle(),
+      title: Faker.name.title(),
+      prefix: Faker.name.prefix(),
+      phoneNumber: Faker.phone.phoneNumber(),
+    });
+  }
+  return users;
+};
 type UserType = {
   firstName: string;
   gender: string;
