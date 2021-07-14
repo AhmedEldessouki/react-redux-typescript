@@ -1,28 +1,29 @@
 import React from "react";
 
+const state = [
+  "PageOne",
+  "PageTwo",
+  "PageThree",
+  "PageFour",
+  "PageFive",
+  "PageSix",
+  "PageSeven",
+  "PageEight",
+  "PageNine",
+  "PageTen",
+  "PageEleven",
+  "PageTwelve",
+];
+const tableBorder: React.CSSProperties = { border: "1px solid black" };
+const fieldStyle: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  width: "100%",
+  margin: "16px auto",
+};
+
 function AdminDashboard() {
-  const state = [
-    "PageOne",
-    "PageTwo",
-    "PageThree",
-    "PageFour",
-    "PageFive",
-    "PageSix",
-    "PageSeven",
-    "PageEight",
-    "PageNine",
-    "PageTen",
-    "PageEleven",
-    "PageTwelve",
-  ];
-  const tableBorder: React.CSSProperties = { border: "1px solid black" };
-  const fieldStyle: React.CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    margin: "16px auto",
-  };
   return (
     <div>
       <h1>Admin Dashboard</h1>
