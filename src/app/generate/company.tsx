@@ -1,25 +1,16 @@
 import React from "react";
-import Faker from "faker/locale/en";
-
-const generateCompany = (num: number) => {
-  const array = [];
-  for (let index = 0; index < num; index++) {
-    array.push({
-      companyName: Faker.company.companyName(),
-      companySuffix: Faker.company.companySuffix(),
-    });
-  }
-  return array;
-};
+import { addCompany } from "../../features/companySlice";
+import { useAppDispatch } from "../hooks";
 
 function CompanyGenerator() {
+  const dispatch = useAppDispatch();
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           const { num } = e.currentTarget;
-          console.log(generateCompany(num.value));
+          dispatch(addCompany({ num: num.value }));
         }}
       >
         <label htmlFor="number-of-companies">number of companies </label>
@@ -30,5 +21,4 @@ function CompanyGenerator() {
   );
 }
 
-export { generateCompany };
 export default CompanyGenerator;
