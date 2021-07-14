@@ -1,7 +1,7 @@
 import React from "react";
 import Faker from "faker/locale/en";
 
-const generateUser = (num: number) => {
+const generateUser = (num: number | undefined = 1) => {
   const users = [];
   for (let index = 0; index < num; index++) {
     users.push({
