@@ -1,4 +1,5 @@
 import React from "react";
+import UserGenerator from "../app/generate/user";
 
 const state = [
   "PageOne",
@@ -27,6 +28,7 @@ function AdminDashboard() {
   return (
     <div>
       <h1>Admin Dashboard</h1>
+      <UserGenerator />
       <form
         onSubmit={(e) => {
           e.preventDefault();
