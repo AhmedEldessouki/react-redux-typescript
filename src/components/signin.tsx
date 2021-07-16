@@ -1,7 +1,10 @@
 import React from "react";
+import { useAuth } from "../context/authContext";
 import usersCred from "../data/users";
 
 function SignIn() {
+  const authState = useAuth();
+
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
 
@@ -9,10 +12,18 @@ function SignIn() {
       username: { value: string };
       password: { value: string };
     };
-    usersCred.find(
+    const user = usersCred.find(
       (item) =>
         item.username === username.value && item.password === password.value
     );
+    if (!user) return;
+    authState.dispatch({
+      type: "sign_in",
+      payload: {
+        username: user.username,
+        password: user.password,
+      },
+    });
   }
   return (
     <div

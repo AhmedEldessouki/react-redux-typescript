@@ -1,29 +1,26 @@
 import React from "react";
-import type { GeneralUserType } from "../types/user";
+// import type { GeneralUserType } from "../types/user";
 
-interface SignedUser extends GeneralUserType {
+type SignedUser = {
   username: string;
   password: string;
-}
-
-class UserClass {
-  userData: GeneralUserType;
-  constructor(args: GeneralUserType) {
-    this.userData = { ...args };
-  }
-
-  update(args: Partial<GeneralUserType>) {
-    return { ...this.userData, ...args };
-  }
-}
-
-const AuthContext = React.createContext<any | undefined>(undefined);
-AuthContext.displayName = "authContext";
+};
 
 type AuthAction =
   | { type: "sign_in"; payload: SignedUser }
-  | { type: "sign_out"; payload: {} };
-type AuthState = SignedUser | {};
+  // | { type: "update"; payload: Partial<SignedUser> }
+  | { type: "sign_out" };
+type AuthState = { user: SignedUser | undefined };
+
+const AuthContext = React.createContext<{
+  user: undefined | SignedUser;
+  dispatch: React.Dispatch<AuthAction>;
+}>({
+  user: undefined,
+  dispatch: () => {},
+});
+AuthContext.displayName = "authContext";
+
 function AuthProvider({
   children,
 }: {
@@ -33,18 +30,19 @@ function AuthProvider({
     (state: AuthState, action: AuthAction) => {
       switch (action.type) {
         case "sign_in":
-          return { ...new UserClass({ ...action.payload }) };
+          return { user: { ...action.payload } };
         case "sign_out":
-          return {};
-
+          return { user: undefined };
+        // case  "update":
+        //   return { ...state, user: {...action.payload} };
         default:
-          return {};
+          return { user: undefined };
       }
     },
-    {}
+    { user: undefined }
   );
   return (
-    <AuthContext.Provider value={{ user: authState, dispatch }}>
+    <AuthContext.Provider value={{ user: authState.user, dispatch }}>
       {children}
     </AuthContext.Provider>
   );
