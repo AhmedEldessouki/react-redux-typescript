@@ -4,6 +4,8 @@ import React from "react";
 type SignedUser = {
   username: string;
   password: string;
+  role: string;
+  access: Array<string>;
 };
 
 type AuthAction =

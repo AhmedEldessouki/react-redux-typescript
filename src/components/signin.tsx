@@ -19,10 +19,7 @@ function SignIn() {
     if (!user) return;
     authState.dispatch({
       type: "sign_in",
-      payload: {
-        username: user.username,
-        password: user.password,
-      },
+      payload: user,
     });
   }
   return (
@@ -31,8 +28,15 @@ function SignIn() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column",
       }}
     >
+      <ul>
+        <li>userName: admin</li>
+        <li>userName: companyAdmin</li>
+        <li>userName: user</li>
+        <li>Password: 123456</li>
+      </ul>
       <form
         onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column" }}
